@@ -172,7 +172,7 @@ func (c *Client) AuthCodeURL(state, accessType, prompt string) string {
 func (c *Client) commonURLValues() url.Values {
 	return url.Values{
 		"redirect_uri": {c.redirectURL.String()},
-		"scope":        {strings.Join(c.scope, " ")},
+		//"scope":        {strings.Join(c.scope, " ")},
 		"client_id":    {c.creds.ID},
 	}
 }
@@ -255,7 +255,6 @@ func (c *Client) UserCredsToken(username, password string) (result TokenResponse
 // If 'grantType' == GrantTypeRefreshToken, then 'value' should be the refresh token.
 func (c *Client) RequestToken(grantType, value string) (result TokenResponse, err error) {
 	v := c.commonURLValues()
-
 	v.Set("grant_type", grantType)
 	v.Set("client_secret", c.creds.Secret)
 	switch grantType {
@@ -269,16 +268,20 @@ func (c *Client) RequestToken(grantType, value string) (result TokenResponse, er
 	}
 
 	req, err := c.newAuthenticatedRequest(c.tokenURL.String(), v)
+	//fmt.Printf("newAuthenticatedRequest: %v: %s, %v, req: %v\n",err, c.tokenURL.String(), v, req)
+
 	if err != nil {
 		return
 	}
+	//body, _ := ioutil.ReadAll(req.Body)
+	//fmt.Printf("req Body: %v\n", string(body))
 
 	resp, err := c.hc.Do(req)
+
 	if err != nil {
 		return
 	}
 	defer resp.Body.Close()
-
 	return parseTokenResponse(resp)
 }
 

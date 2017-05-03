@@ -346,9 +346,9 @@ func (p ProviderConfig) Valid() error {
 		return errors.New("missing required field id_token_signing_alg_values_supported")
 	}
 
-	if len(p.ScopesSupported) != 0 && !contains(p.ScopesSupported, "openid") {
-		return errors.New("scoped_supported must be unspecified or include 'openid'")
-	}
+	//if len(p.ScopesSupported) != 0 && !contains(p.ScopesSupported, "openid") {
+	//	return errors.New("scoped_supported must be unspecified or include 'openid'")
+	//}
 
 	if !contains(p.IDTokenSigningAlgValues, "RS256") {
 		return errors.New("id_token_signing_alg_values_supported must include 'RS256'")

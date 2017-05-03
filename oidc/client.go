@@ -743,7 +743,8 @@ func (c *Client) ExchangeAuthCode(code string) (jose.JWT, error) {
 		return jose.JWT{}, err
 	}
 
-	jwt, err := jose.ParseJWT(t.IDToken)
+	jwt, err := jose.ParseJWT(t.AccessToken)
+	fmt.Println(t.AccessToken)
 	if err != nil {
 		return jose.JWT{}, err
 	}
@@ -843,4 +844,8 @@ func (r *providerConfigRepo) Get() ProviderConfig {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
 	return r.config
+}
+
+func (c *Client) SetRedirectURL(redirectURL string)  {
+	c.redirectURL = redirectURL
 }
