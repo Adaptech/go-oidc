@@ -125,7 +125,7 @@ func (r *remoteKeySet) keysWithID(ctx context.Context, keyIDs []string) ([]jose.
 				//
 				// Add a context key to allow the recover behavior.
 				//
-				// See: https://github.com/coreos/go-oidc/issues/89
+				// See: https://github.com/Adaptech/go-oidc/issues/89
 
 				// Sync keys and close inflightCtx when that's done.
 				// Use the remoteKeySet's context instead of the requests context

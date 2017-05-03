@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"time"
 
-	phttp "github.com/coreos/go-oidc/http"
-	"github.com/coreos/go-oidc/jose"
-	"github.com/coreos/go-oidc/key"
+	phttp "github.com/Adaptech/go-oidc/http"
+	"github.com/Adaptech/go-oidc/jose"
+	"github.com/Adaptech/go-oidc/key"
 )
 
 // DefaultPublicKeySetTTL is the default TTL set on the PublicKeySet if no

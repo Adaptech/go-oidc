@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"os"
 
-	oidc "github.com/coreos/go-oidc"
+	oidc "github.com/Adaptech/go-oidc"
 
 	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
