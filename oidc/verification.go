@@ -179,12 +179,12 @@ func (v *JWTVerifier) Verify(jwt jose.JWT) error {
 		return fmt.Errorf("oidc: failed syncing KeySet: %v", err)
 	}
 
-	//ok, err = VerifySignature(jwt, v.keysFunc())
-	//if err != nil {
-	//	return fmt.Errorf("oidc: JWT signature verification failed: %v", err)
-	//} else if !ok {
-	//	return errors.New("oidc: unable to verify JWT signature: no matching keys")
-	//}
+	ok, err = VerifySignature(jwt, v.keysFunc())
+	if err != nil {
+		return fmt.Errorf("oidc: JWT signature verification failed: %v", err)
+	} else if !ok {
+		return errors.New("oidc: unable to verify JWT signature: no matching keys")
+	}
 
 	return nil
 }
